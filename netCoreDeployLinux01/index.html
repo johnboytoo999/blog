@@ -4,15 +4,17 @@
   <meta charset="utf-8">
   
   
-  <title>2022010601 | Hexo</title>
+  <title>linux 上部屬 .NET 程式 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="2022010601">
+  <meta name="description" content="一.前言這篇文章主要是紀錄如何將 .NET 應用程式部屬到 linux 上文章使用的 Linux 的作業系統是 Ubuntu 20.04 二.安裝環境MobaXtermMobaXterm是一個遠端連線工具，我們可以透過連線至遠端的系統，在 Windows 上可以方便傳輸檔案及管理多個遠端系統，我們可以透過點選左上方 Session 進行設定連線, 範例的 Linux 為 Amazon 上建立的，要">
+<meta property="og:type" content="website">
+<meta property="og:title" content="linux 上部屬 .NET 程式">
 <meta property="og:url" content="https://johnboytoo999.github.io/hexo/netCoreDeployLinux01/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="一.前言這篇文章主要是紀錄如何將 .NET 應用程式部屬到 linux 上文章使用的 Linux 的作業系統是 Ubuntu 20.04 二.安裝環境MobaXtermMobaXterm是一個遠端連線工具，我們可以透過連線至遠端的系統，在 Windows 上可以方便傳輸檔案及管理多個遠端系統，我們可以透過點選左上方 Session 進行設定連線, 範例的 Linux 為 Amazon 上建立的，要">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-01-06T09:15:32.000Z">
-<meta property="article:modified_time" content="2022-01-06T09:15:32.354Z">
+<meta property="article:modified_time" content="2022-01-06T09:33:40.441Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
   
@@ -85,7 +87,7 @@
         
   
     <h1 class="p-name article-title" itemprop="headline name">
-      2022010601
+      linux 上部屬 .NET 程式
     </h1>
   
 
@@ -93,11 +95,46 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        
+        <h2 id="一-前言"><a href="#一-前言" class="headerlink" title="一.前言"></a>一.前言</h2><p>這篇文章主要是紀錄如何將 .NET 應用程式部屬到 linux 上<br>文章使用的 Linux 的作業系統是 Ubuntu 20.04</p>
+<h2 id="二-安裝環境"><a href="#二-安裝環境" class="headerlink" title="二.安裝環境"></a>二.安裝環境</h2><h3 id="MobaXterm"><a href="#MobaXterm" class="headerlink" title="MobaXterm"></a>MobaXterm</h3><p>MobaXterm是一個遠端連線工具，我們可以透過連線至遠端的系統，在 Windows 上可以方便傳輸檔案及管理多個遠端系統，我們可以透過點選左上方 Session 進行設定連線, 範例的 Linux 為 Amazon 上建立的，要進行連線時需要輸入以下資訊</p>
+<p>Basic SSH settings</p>
+<ul>
+<li>Remote host: 輸入 IP 位置</li>
+<li>Specify username: Ubuntu 預設是輸入 Ubuntu</li>
+</ul>
+<p>Advanced SSH settings</p>
+<ul>
+<li>Use Private Key: 這裡要勾選並上傳.pem檔案，如果是使用雲端的 Linux 可以在網站上取得</li>
+</ul>
+<p>設定完成後即可連線</p>
+<h3 id="執行時間"><a href="#執行時間" class="headerlink" title="執行時間"></a>執行時間</h3><p>需安裝執行時間才可以執行 .NET 應用程式</p>
+<ol>
+<li><p>安裝前須執行下列命令，將 Microsoft 套件簽署金鑰新增至受信賴起點清單</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">wget https://packages.microsoft.com/config/ubuntu/20.04/packages-microsoft-prod.deb -O packages-microsoft-prod.deb</span><br><span class="line">sudo dpkg -i packages-microsoft-prod.deb</span><br><span class="line">rm packages-microsoft-prod.deb</span><br></pre></td></tr></table></figure></li>
+<li><p>接下來安裝根據 .NET 版本安裝 Runtime (範例為 .NET 6.0)</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get update; \</span><br><span class="line">sudo apt-get install -y apt-transport-https &amp;&amp; \</span><br><span class="line">sudo apt-get update &amp;&amp; \</span><br><span class="line">sudo apt-get install -y aspnetcore-runtime-6.0</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h2 id="三-部屬程式"><a href="#三-部屬程式" class="headerlink" title="三.部屬程式"></a>三.部屬程式</h2><h3 id="部屬"><a href="#部屬" class="headerlink" title="部屬"></a>部屬</h3><ol>
+<li><p>將程式發布後，我們可以在 /home/ubuntu 上建立一個 Deploy 資料夾，專門放置程式資料夾。</p>
+</li>
+<li><p>將過版的檔案放入後，輸入指令到當前目錄</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /home/ubuntu/Deploy/yourProjectFile</span><br></pre></td></tr></table></figure></li>
+<li><p>接者執行指令，啟動程式</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">donet yourProjectName.dll</span><br></pre></td></tr></table></figure></li>
+<li><p>這時候會出現以下指令，程式成功部屬在localhost上</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">info: Microsoft.Hosting.Lifetime[14]</span><br><span class="line">      Now listening on: http://localhost:5000</span><br></pre></td></tr></table></figure></li>
+<li><p>因為要對外開放，所以要加上url參數</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dotnet yourProjectName.dll --urls http://*:5000 </span><br></pre></td></tr></table></figure></li>
+<li><p>都… 結束了嗎? 並沒有，還需要開啟防火牆，本菜雞還去用指令防火牆狀態</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo ufw status</span><br><span class="line">sudo ufw allow 5000</span><br></pre></td></tr></table></figure></li>
+<li><p>但怎麼做都是徒勞無功，防火牆狀態是關閉的，經過一番波折才發現防火牆原來是雲端管理的，需從網站上打開，Amazon 是從 Networking 裡的 IPv4 Firewall 去新增規則，如果要新增 Port 5000，可以新增自己定義的 TCP Port 5000, 新增完後即可使用了。</p>
+</li>
+</ol>
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://johnboytoo999.github.io/hexo/netCoreDeployLinux01/index.html" data-id="cky2rme8w000010uz7wk53jx0" data-title="2022010601" class="article-share-link">Share</a>
+      <a data-url="https://johnboytoo999.github.io/hexo/netCoreDeployLinux01/index.html" data-id="cky2rwz1b0000oguz8umigcg2" data-title="linux 上部屬 .NET 程式" class="article-share-link">Share</a>
       
       
       
