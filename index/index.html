@@ -172,10 +172,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">發表於</span>
-              
 
-              <time title="創建時間：2022-01-06 17:15:32 / 修改時間：23:28:55" itemprop="dateCreated datePublished" datetime="2022-01-06T17:15:32+08:00">2022-01-06</time>
+              <time title="創建時間：2022-01-06 17:15:32" itemprop="dateCreated datePublished" datetime="2022-01-06T17:15:32+08:00">2022-01-06</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新於</span>
+                <time title="修改時間：2022-01-07 01:45:08" itemprop="dateModified" datetime="2022-01-07T01:45:08+08:00">2022-01-07</time>
+              </span>
 
           
 
@@ -189,7 +195,8 @@
 
       
           <h2 id="一-前言"><a href="#一-前言" class="headerlink" title="一.前言"></a>一.前言</h2><p>這篇文章主要是紀錄如何將 .NET 應用程式部屬到 linux 上<br>文章使用的 Linux 的作業系統是 Ubuntu 20.04</p>
-<h2 id="二-安裝環境"><a href="#二-安裝環境" class="headerlink" title="二.安裝環境"></a>二.安裝環境</h2><h3 id="MobaXterm"><a href="#MobaXterm" class="headerlink" title="MobaXterm"></a>MobaXterm</h3><p>MobaXterm是一個遠端連線工具，我們可以透過連線至遠端的系統，在 Windows 上可以方便傳輸檔案及管理多個遠端系統，我們可以透過點選左上方 Session 進行設定連線, 範例的 Linux 為 Amazon 上建立的，要進行連線時需要輸入以下資訊</p>
+<h2 id="二-安裝環境"><a href="#二-安裝環境" class="headerlink" title="二.安裝環境"></a>二.安裝環境</h2><h3 id="MobaXterm"><a href="#MobaXterm" class="headerlink" title="MobaXterm"></a>MobaXterm</h3><p><a target="_blank" rel="noopener" href="https://mobaxterm.mobatek.net/" title="mobaxterm下載點">MobaXterm</a>是一個遠端連線工具，我們可以透過連線至遠端的系統，在 Windows 上可以方便傳輸檔案及管理多個遠端系統，我們可以透過點選左上方 Session 進行設定連線, 範例的 Linux 為 Amazon 上建立的，要進行連線時需要輸入以下資訊</p>
+<p><img src="/blog/images/pic01.png"></p>
 <p>Basic SSH settings</p>
 <ul>
 <li>Remote host: 輸入 IP 位置</li>
@@ -223,6 +230,7 @@
 <li><p>但怎麼做都是徒勞無功，防火牆狀態是關閉的，經過一番波折才發現防火牆原來是雲端管理的，需從網站上打開，Amazon 是從 Networking 裡的 IPv4 Firewall 去新增規則，如果要新增 Port 5000，可以新增自己定義的 TCP Port 5000, 新增完後即可使用了。</p>
 </li>
 </ol>
+<p><img src="/blog/images/pic02.png"></p>
 
       
     </div>
@@ -392,8 +400,9 @@
         </a>
       </div>
       <div class="site-state-item site-state-tags">
+            <a href="/blog/tags/">
         <span class="site-state-item-count">3</span>
-        <span class="site-state-item-name">標籤</span>
+        <span class="site-state-item-name">標籤</span></a>
       </div>
   </nav>
 </div>
