@@ -174,7 +174,7 @@
               <span class="post-meta-item-text">發表於</span>
               
 
-              <time title="創建時間：2022-01-07 17:00:00 / 修改時間：16:46:56" itemprop="dateCreated datePublished" datetime="2022-01-07T17:00:00+08:00">2022-01-07</time>
+              <time title="創建時間：2022-01-07 17:00:00 / 修改時間：16:49:47" itemprop="dateCreated datePublished" datetime="2022-01-07T17:00:00+08:00">2022-01-07</time>
             </span>
 
           
@@ -202,8 +202,8 @@
 Description= .NET TEST
 
 [Service]
-WorkingDirectory= /home/ubuntu/Deploy/apiTest
-ExecStart=/usr/bin/dotnet /home/ubuntu/Deploy/apiTest/TestAPI.dll --urls http://*:5000
+WorkingDirectory= /home/ubuntu/Deploy/yourProjectFile
+ExecStart=/usr/bin/dotnet /home/ubuntu/Deploy/yourProjectFile/yourProjectName.dll --urls http://*:5000
 Restart=always
 RestartSec=10
 SyslogIdentifier=dotnet-example
@@ -223,7 +223,7 @@ WantedBy=multi-user.target
 <li>Shift ZQ 或 CTRL + Z (離開不要存檔)</li>
 </ul>
 <h2 id="開啟Service服務"><a href="#開啟Service服務" class="headerlink" title="開啟Service服務"></a>開啟Service服務</h2><p>接者執行下列指令, 就能使用 .NET程式了</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">// 設定開機自動啟動服務</span><br><span class="line">sudo systemctl <span class="built_in">enable</span> yourServiceName.service</span><br><span class="line"></span><br><span class="line">// 啟動服務</span><br><span class="line">sudo systemctl start  yourServiceName.service</span><br><span class="line"></span><br><span class="line">// 查看服務狀態</span><br><span class="line">sudo systemctl status yourServiceName.service</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">// 設定開機自動啟動服務</span><br><span class="line">sudo systemctl <span class="built_in">enable</span> yourServiceName.service</span><br><span class="line"></span><br><span class="line">// 啟動服務</span><br><span class="line">sudo systemctl start yourServiceName.service</span><br><span class="line"></span><br><span class="line">// 查看服務狀態</span><br><span class="line">sudo systemctl status yourServiceName.service</span><br></pre></td></tr></table></figure>
 <p>常用指令</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">// 停止服務</span><br><span class="line">sudo systemctl stop yourServiceName.service</span><br><span class="line"></span><br><span class="line">//重啟服務 </span><br><span class="line">sudo systemctl restart yourServiceName.service</span><br><span class="line"></span><br><span class="line">// 重新加載服務的配置文件</span><br><span class="line">sudo systemctl daemon-reload</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <h2 id="結論"><a href="#結論" class="headerlink" title="結論"></a>結論</h2><p>使用 linux 服務就能放置多個程式，但使用起來有點麻煩複雜，環境設定上 docker 較為輕鬆。</p>
