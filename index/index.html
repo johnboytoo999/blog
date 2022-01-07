@@ -174,7 +174,7 @@
               <span class="post-meta-item-text">發表於</span>
               
 
-              <time title="創建時間：2022-01-07 17:00:00 / 修改時間：16:49:47" itemprop="dateCreated datePublished" datetime="2022-01-07T17:00:00+08:00">2022-01-07</time>
+              <time title="創建時間：2022-01-07 17:00:00 / 修改時間：16:51:40" itemprop="dateCreated datePublished" datetime="2022-01-07T17:00:00+08:00">2022-01-07</time>
             </span>
 
           
@@ -189,7 +189,9 @@
 
       
           <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>上一篇成功將部屬到 Linux，但無法打任何指令，不能執行多個程序，只能進行開發及測試，所以這篇主要紀錄如何包成 Linux Service</p>
-<h2 id="建立Service檔案"><a href="#建立Service檔案" class="headerlink" title="建立Service檔案"></a>建立Service檔案</h2><h3 id="建立檔案"><a href="#建立檔案" class="headerlink" title="建立檔案"></a>建立檔案</h3><p>首先在 /etc/systemd/system 目錄中建立一個 service 檔案，這裡使用 vim 指令來建立，如果用一般方式建立檔案會因為權限不足而出現 Permission denied 的警告<br>bash<br>sudo vim /etc/systemd/system/yourServiceName.service<br>接下來將以下內容寫入service檔案</p>
+<h2 id="建立Service檔案"><a href="#建立Service檔案" class="headerlink" title="建立Service檔案"></a>建立Service檔案</h2><h3 id="建立檔案"><a href="#建立檔案" class="headerlink" title="建立檔案"></a>建立檔案</h3><p>首先在 /etc/systemd/system 目錄中建立一個 service 檔案，這裡使用 vim 指令來建立，如果用一般方式建立檔案會因為權限不足而出現 Permission denied 的警告</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo vim /etc/systemd/system/yourServiceName.service</span><br></pre></td></tr></table></figure>
+<p>接下來將以下內容寫入service檔案</p>
 <ul>
 <li><strong>WorkingDirectory</strong>: 為執行的檔案路徑</li>
 <li><strong>ExecStart</strong>: 為執行指令, 這裡記得如果有 port 要加上</li>
